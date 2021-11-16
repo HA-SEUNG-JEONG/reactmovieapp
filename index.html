@@ -12,11 +12,14 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     function App() {
-      const [counter, modifer] = React.useState(0); //비구조 할당
+      const [counter, setCounter] = React.useState(0); //비구조 할당
+      const onClick = () => {
+        setCounter(counter + 1); //함수로 작용
+      };
       return (
         <div>
-          <h3>Total Clicks :0</h3>
-          <button>Click me</button>
+          <h3>Total Clicks :{counter}</h3>
+          <button onClick={onClick}>Click me</button>
         </div>
       );
     }
