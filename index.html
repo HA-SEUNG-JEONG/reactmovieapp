@@ -11,27 +11,16 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countUp() {
-      counter = counter + 1;
-      reRender();
-    }
-
-    function reRender() {
-      ReactDOM.render(<Container />, root);
-    }
-    /*component의 첫 글자는 반드시 대문자!*/
-    function Container() {
+    function App() {
+      const [counter, modifer] = React.useState(0); //비구조 할당
       return (
         <div>
-          <h3>Total Clicks :{counter}</h3>
-          <button onClick={countUp}>Click me</button>
+          <h3>Total Clicks :0</h3>
+          <button>Click me</button>
         </div>
       );
-      //vanilla js와 달리 h3,button,div 태그는 업데이트 되지 않음
-      //UI에서 바뀐 부분만 업데이트
     }
 
-    reRender();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
