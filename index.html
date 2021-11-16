@@ -11,27 +11,27 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = () => (
-      <h3 id="title" onMouseEnter={() => console.log("mouser enter")}>
-        Hello
-      </h3>
-    );
-    const Button = () => (
-      <button
-        style={{
-          backgroundColor: "tomato",
-        }}
-        onClick={() => console.log("im clicked")}
-      >
-        Click me
-      </button>
-    );
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      reRender();
+    }
+
+    function reRender() {
+      ReactDOM.render(<Container />, root);
+    }
     /*component의 첫 글자는 반드시 대문자!*/
-    const Container = () => (
-      <div>
-        <Title /> <Button />
-      </div>
-    );
-    ReactDOM.render(<Container />, root);
+    function Container() {
+      return (
+        <div>
+          <h3>Total Clicks :{counter}</h3>
+          <button onClick={countUp}>Click me</button>
+        </div>
+      );
+      //vanilla js와 달리 h3,button,div 태그는 업데이트 되지 않음
+      //UI에서 바뀐 부분만 업데이트
+    }
+
+    reRender();
   </script>
 </html>
